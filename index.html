@@ -63,7 +63,7 @@ label{font-size:13px;font-weight:700;display:block;margin:16px 0 7px}select,inpu
           <div><label for="water">Tanker water extra (₹/mo, 0 if Cauvery)</label><input type="number" id="water" value="1800" min="0"></div>
         </div>
         <div class="row2">
-          <div><label for="stamp">Stamp duty + registration (% of price)</label><input type="number" id="stamp" value="6" min="0" max="10" step="0.1"></div>
+          <div><label for="stamp">Stamp duty + registration (% of price) — illustrative default, check current Karnataka rates</label><input type="number" id="stamp" value="6" min="0" max="10" step="0.1"></div>
           <div><label for="interior">Interiors + move-in (₹, one-time)</label><input type="number" id="interior" value="400000" min="0" step="50000"></div>
         </div>
       </div>
@@ -181,7 +181,7 @@ function calc(){
   $('yrRows').innerHTML=rows;
   const yld=price>0?(rent0*12/price*100):0;
   const box=$('verdictBox');
-  if(breakeven){box.className='insight good';box.innerHTML=`<b>Buying pulls ahead in year ${breakeven}</b> on these assumptions. Before that, renting plus investing the ${fmtL(down+stamp+interior)} upfront is ahead. If you might move city inside ${Math.min(breakeven,7)} years, renting keeps you flexible and richer.`}
+  if(breakeven){box.className='insight good';box.innerHTML=`<b>Buying pulls ahead in year ${breakeven}</b> on these assumptions. Before that, renting plus investing the ${fmtL(down+stamp+interior)} upfront is ahead. If you might move city inside ${Math.min(breakeven,7)} years, renting keeps you flexible and, on these assumptions, ahead — run pessimistic and optimistic versions before deciding.`}
   else{box.className='insight warn';box.innerHTML=`<b>Renting stays ahead for the full ${horizon} years</b> on these assumptions. The renter's invested down payment outcompounds the flat at ${$('appr').value}% appreciation. Buying starts to win if appreciation crosses roughly ${(+$('appr').value+2).toFixed(1)}% — try the knob.`}
   $('basisBox').innerHTML=`<b>Basis:</b> price ${fmtL(price)} (${fmt(+$('psf').value||0)}/sf × ${$('size').value} sf) · rent yield ${yld.toFixed(1)}%/yr · loan ${fmtL(loan)} at ${rate}% for ${tenure} yrs → EMI ${fmt(e)} · upfront ${fmtL(down+stamp+interior)} (down ${$('down').value}% + stamp ${$('stamp').value}% + interiors). Wealth paths compound spare cash at ${$('inv').value}% p.a.`;
 }
