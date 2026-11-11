@@ -15,13 +15,13 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1180px;margin:0 auto;padding:20px 18px 44px}
 .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--teal)}
-h1{font-size:clamp(28px,5vw,46px);line-height:1.05;margin:10px 0 10px;letter-spacing:-.03em;max-width:780px}h1 span{color:var(--teal)}
+h1{font-size:clamp(28px,5vw,46px);line-height:1.15;margin:10px 0 10px;letter-spacing:-.03em;max-width:780px;text-wrap:balance}h1 span{color:var(--teal)}
 .sub{font-size:17px;color:var(--muted);max-width:740px;margin:0}
 .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:18px;align-items:start}@media(max-width:860px){.grid{grid-template-columns:1fr}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}.card h2{margin:0 0 4px;font-size:18px;letter-spacing:-.02em}.card p.help{margin:0 0 8px;color:var(--muted);font-size:14px}
 label{font-size:13px;font-weight:700;display:block;margin:16px 0 7px}select,input[type=number]{width:100%;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:15px;font-family:inherit}select:focus,input:focus{outline:2px solid var(--teal);outline-offset:1px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.row2{grid-template-columns:1fr}}
-.badge{font-family:"IBM Plex Mono",monospace;font-weight:600;background:var(--card2);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:13px;white-space:nowrap}
+.badge{font-family:"IBM Plex Mono",monospace;font-weight:600;background:var(--card2);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:13px;max-width:100%}
 .note{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.45}.note b{color:var(--ink)}
 .verdict{position:sticky;top:14px}@media(max-width:860px){.verdict{position:static}}
 .verdictTop{background:var(--teal);color:#fff;border-radius:18px;padding:22px}.verdictTop small{letter-spacing:.1em;text-transform:uppercase;font-weight:800;font-size:11px;opacity:.9}
@@ -133,7 +133,7 @@ label{font-size:13px;font-weight:700;display:block;margin:16px 0 7px}select,inpu
 <script>
 const $=id=>document.getElementById(id);
 const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
-const fmtL=n=>{const a=Math.abs(n);const s=n<0?'−':'';if(a>=1e7)return s+'₹'+(a/1e7).toFixed(2)+' Cr';if(a>=1e5)return s+'₹'+(a/1e5).toFixed(1)+' L';return s+'₹'+Math.round(a).toLocaleString('en-IN')};
+const fmtL=n=>{const a=Math.abs(n);const s=n<0?'−':'';if(a>=1e7)return s+'₹'+(a/1e7).toFixed(2)+' Cr';return s+'₹'+(a/1e5).toFixed(1)+' L'};
 const MKTS=[
  {id:'whitefield',name:'Whitefield',psf:10850,rent:38000,tanker:true},
  {id:'sarjapur',name:'Sarjapur Road',psf:11560,rent:39800,tanker:true},
